@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Dec 28 21:04:00 2018
-
-@author: 4ever
-"""
-
 from bs4 import BeautifulSoup
 import requests
 
@@ -29,16 +22,14 @@ for s in string:
  teams.append(val)
 
 string= soup.find_all('div',{'class':'Whs(nw) D(tbc) Va(m) Fw(b) Fz(27px)'})
-print(string[2])
+#print(string[2])
 for s in string:
     val = s.get_text()
     score.append(val)
 
-for x in range(0,2):
-    teams.pop(0)
+#for x in range(0,2):
+    #teams.pop(0)
     
-#print(teams)
 
-if len(score) == len(teams):
-    for x in range (0,len(teams),1):
-       print(teams[x],score[x],sep=':') 
+for x in range (0,len(teams),1):
+  print(teams[x],score[x],sep=':') 
