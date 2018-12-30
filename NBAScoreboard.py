@@ -1,7 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 
-page = requests.get('https://sports.yahoo.com/nba/scoreboard/')
+
+d = input('date format (yyyy-mm-dd): ')
+
+page = requests.get('https://sports.yahoo.com/nba/scoreboard/?confId=&schedState=2&dateRange='+d)
 soup = BeautifulSoup(page.content,'html.parser')
 
 list(soup.children)
@@ -30,6 +33,6 @@ for s in string:
 #for x in range(0,2):
     #teams.pop(0)
     
-
+print(len(teams),len(score),sep=',')
 for x in range (0,len(teams),1):
   print(teams[x],score[x],sep=':') 
