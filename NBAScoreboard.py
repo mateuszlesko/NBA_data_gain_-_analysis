@@ -2,6 +2,8 @@ from bs4 import BeautifulSoup
 import requests
 
 
+
+
 d = input('date format (yyyy-mm-dd): ')
 
 page = requests.get('https://sports.yahoo.com/nba/scoreboard/?confId=&schedState=2&dateRange='+d)
@@ -13,6 +15,7 @@ list(soup.children)
 
 teams = []
 score = []
+scoreInt = [int(i) for i in score]
 scoreboard = {}
 
 #print(soup.find_all('span',{'data-tst':'first-name'}))
@@ -36,3 +39,13 @@ for s in string:
 print(len(teams),len(score),sep=',')
 for x in range (0,len(teams),1):
   print(teams[x],score[x],sep=':') 
+  
+
+for x,y in zip(score[0::2],score[1::2]):
+    x1 = int(x)
+    y1=int(y)
+    if x1>y1:
+        print(int(x),'>',int(y))
+    else:
+        print(int(x),'<',int(y))
+        
