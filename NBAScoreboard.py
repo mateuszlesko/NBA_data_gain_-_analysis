@@ -69,6 +69,7 @@ if d == getTodaysDate(datetime.datetime.now()):
     
     for x in range(0,2):
         teams.pop(0)
+        score.pop(0)
         
 
 for x in range (0,len(teams),1):
@@ -100,4 +101,4 @@ for s1,s2 in zip(scoreboard[0::2],scoreboard[1::2]):
   print('######################')
   index+=1   
         
-        
+       
