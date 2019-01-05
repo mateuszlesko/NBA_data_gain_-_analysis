@@ -37,6 +37,7 @@ list(soup.children)
 teams = []
 score = []
 scoreboard = []
+links = []
     
     
 string = soup.find_all('span',{'data-tst':'first-name'})
@@ -50,8 +51,12 @@ string= soup.find_all('div',{'class':'Whs(nw) D(tbc) Va(m) Fw(b) Fz(27px)'})
 for s in string:
    val = s.get_text()
    score.append(val)
-    
-    
+
+string = soup.find_all('a',{'C(primary-text) C(primary-text):link C(primary-text):visited Td(n) gamecard-final'})
+
+for s in string:
+    link = 'https://sports.yahoo.com'
+    links.append(link+str(s.get('href')))
         
 print(len(teams),len(score),sep=',')
 
@@ -59,7 +64,7 @@ print(len(teams),len(score),sep=',')
 if d == getTodaysDate(datetime.datetime.now()):
     
     '''
-    delete match where haven't got score, still to come
+    delete match which haven't got score, still to come
     '''
     
     for x in range(0,2):
@@ -69,9 +74,10 @@ if d == getTodaysDate(datetime.datetime.now()):
 for x in range (0,len(teams),1):
       
    scoreboard.append(Scoreboard(teams[x],int(score[x]),None,None))
-    
+
+index = 0     
 for s1,s2 in zip(scoreboard[0::2],scoreboard[1::2]):
-        
+       
   if s1.score > s2.score:
      s1.win = True
      s1.lose = False
@@ -85,13 +91,13 @@ for s1,s2 in zip(scoreboard[0::2],scoreboard[1::2]):
             
   print('Away',s1.name,s1.score,sep=':') 
   print('Home',s2.name,s2.score,sep=':') 
+  print('details:',links[index])
   if s1.win == True:
      print(s1.name,' won')
   else:
      print(s2.name,' won')
         #print('Team at Home won: ',s2.score > s1.score)
   print('######################')
+  index+=1   
         
-    
-    
         
