@@ -67,9 +67,9 @@ if d == getTodaysDate(datetime.datetime.now()):
     delete match which haven't got score, still to come
     '''
     
-    for x in range(0,2):
-        teams.pop(0)
-        score.pop(0)
+    #for x in range(0,2):
+       # teams.pop(0)
+       # score.pop(0)
         
 
 for x in range (0,len(teams),1):
@@ -100,5 +100,3 @@ for s1,s2 in zip(scoreboard[0::2],scoreboard[1::2]):
         #print('Team at Home won: ',s2.score > s1.score)
   print('######################')
   index+=1   
-        
-       
