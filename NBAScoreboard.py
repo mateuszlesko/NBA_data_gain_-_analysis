@@ -66,6 +66,7 @@ if d == getTodaysDate(datetime.datetime.now()):
     '''
     delete match which haven't got score, still to come
     '''
+    print('sometimes result can be mixed, check if matches ended in recent day')
     
     #for x in range(0,2):
        # teams.pop(0)
@@ -99,4 +100,28 @@ for s1,s2 in zip(scoreboard[0::2],scoreboard[1::2]):
      print(s2.name,' won')
         #print('Team at Home won: ',s2.score > s1.score)
   print('######################')
-  index+=1   
+  index+=1 
+
+#date = str(datetime.datetime.now())
+fname = '{date}.txt'.format(date=d)
+f = open(fname,'w+')
+string = ''
+for s1,s2 in zip(scoreboard[0::2],scoreboard[1::2]):
+   string ='{team} : {score} \n'.format(team=s1.name,score=s1.score)
+   f.write(string)
+   string ='{team} : {score} \n'.format(team=s2.name,score=s2.score)
+   f.write(string)
+   if(s1.score>s2.score):
+       string="{team} won \n".format(team=s1.name)
+   else:
+       string="{team} won \n".format(team=s2.name)
+    
+   f.write(string)
+   f.write("############################### \n")
+   #f.wrire('%team : $s \n',s2.name,s2.score)
+   #if(s1.score>s2.score):
+    #  f.write('%s1 won',s1.name)
+  # else:
+    #  f.write('%s2 won',s2.name)
+        
+f.close()
