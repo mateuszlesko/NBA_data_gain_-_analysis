@@ -103,25 +103,32 @@ for s1,s2 in zip(scoreboard[0::2],scoreboard[1::2]):
   index+=1 
 
 #date = str(datetime.datetime.now())
-fname = '{date}.txt'.format(date=d)
-f = open(fname,'w+')
-string = ''
-for s1,s2 in zip(scoreboard[0::2],scoreboard[1::2]):
-   string ='{team} : {score} \n'.format(team=s1.name,score=s1.score)
-   f.write(string)
-   string ='{team} : {score} \n'.format(team=s2.name,score=s2.score)
-   f.write(string)
-   if(s1.score>s2.score):
-       string="{team} won \n".format(team=s1.name)
-   else:
-       string="{team} won \n".format(team=s2.name)
+def WannaSave(x):
+    save = False
+    if(x=='Y' or x=='y'):
+        save = True
+    return save
+if(WannaSave(input("If you want save results put 'Y' or 'y'"))==True):
     
-   f.write(string)
-   f.write("############################### \n")
-   #f.wrire('%team : $s \n',s2.name,s2.score)
-   #if(s1.score>s2.score):
-    #  f.write('%s1 won',s1.name)
-  # else:
-    #  f.write('%s2 won',s2.name)
+    fname = '{date}.txt'.format(date=d)
+    f = open(fname,'w+')
+    string = ''
+    for s1,s2 in zip(scoreboard[0::2],scoreboard[1::2]):
+       string ='{team} : {score} \n'.format(team=s1.name,score=s1.score)
+       f.write(string)
+       string ='{team} : {score} \n'.format(team=s2.name,score=s2.score)
+       f.write(string)
+       if(s1.score>s2.score):
+           string="{team} won \n".format(team=s1.name)
+       else:
+           string="{team} won \n".format(team=s2.name)
         
-f.close()
+       f.write(string)
+       f.write("############################### \n")
+       #f.wrire('%team : $s \n',s2.name,s2.score)
+       #if(s1.score>s2.score):
+        #  f.write('%s1 won',s1.name)
+      # else:
+        #  f.write('%s2 won',s2.name)
+            
+    f.close()
