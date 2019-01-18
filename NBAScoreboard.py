@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import datetime
 import requests
 
+
 class Scoreboard(object):
     def __init__(self,name,score,win,lose):
         self.name = name
@@ -10,8 +11,8 @@ class Scoreboard(object):
         self.lose = lose
     
         
-
-d = input('date format (yyyy-mm-dd): ')
+def askForDate(d):
+    return d
 
 def getTodaysDate(x):
     x = datetime.datetime.now()
@@ -60,7 +61,7 @@ for s in string:
         
 print(len(teams),len(score),sep=',')
 
-
+d = askForDate(input('date format (yyyy-mm-dd): '))
 if d == getTodaysDate(datetime.datetime.now()):
     
     '''
@@ -108,9 +109,10 @@ def WannaSave(x):
     if(x=='Y' or x=='y'):
         save = True
     return save
-if(WannaSave(input("If you want save results put 'Y' or 'y'"))==True):
+def CreateFile():
     
     fname = '{date}.txt'.format(date=d)
+    
     f = open(fname,'w+')
     string = ''
     for s1,s2 in zip(scoreboard[0::2],scoreboard[1::2]):
@@ -125,10 +127,16 @@ if(WannaSave(input("If you want save results put 'Y' or 'y'"))==True):
         
        f.write(string)
        f.write("############################### \n")
+      
+       
+if(WannaSave(input("If you want save results put 'Y' or 'y'"))==True):
+    CreateFile()
+    
+    
        #f.wrire('%team : $s \n',s2.name,s2.score)
        #if(s1.score>s2.score):
         #  f.write('%s1 won',s1.name)
       # else:
         #  f.write('%s2 won',s2.name)
             
-    f.close()
+    
