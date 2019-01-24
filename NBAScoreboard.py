@@ -3,7 +3,7 @@ import datetime
 import requests
 
 
-class Scoreboard(object):
+class FinishedMatchesScoreboard(object):
     def __init__(self,name,score,win,lose):
         self.name = name
         self.score = score
@@ -76,7 +76,7 @@ if d == getTodaysDate(datetime.datetime.now()):
 
 for x in range (0,len(teams),1):
       
-   scoreboard.append(Scoreboard(teams[x],int(score[x]),None,None))
+   scoreboard.append(FinishedMatchesScoreboard(teams[x],int(score[x]),None,None))
 
 index = 0     
 for s1,s2 in zip(scoreboard[0::2],scoreboard[1::2]):
@@ -131,12 +131,3 @@ def CreateFile():
        
 if(WannaSave(input("If you want save results put 'Y' or 'y'"))==True):
     CreateFile()
-    
-    
-       #f.wrire('%team : $s \n',s2.name,s2.score)
-       #if(s1.score>s2.score):
-        #  f.write('%s1 won',s1.name)
-      # else:
-        #  f.write('%s2 won',s2.name)
-            
-    
