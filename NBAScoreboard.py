@@ -148,17 +148,18 @@ def ScrapeWebsiteWhenLive(page):
         print('###########')
     '''
     for ln1,ln2 in zip(last_names[0:2],last_names[1:2]):
-        print(ln1,score[x1],dates[x1],'\n',sep=':')
-        print(ln2,score[x2],dates[x1],'\n',sep=':')
+        print(dates[x1])
+        print(ln1,score[x1],sep=':')
+        print(ln2,score[x2],sep=':')
         print('###########')
         x1+=1
         x2+=1
         
-        print(x1,x2)
+      
     '''    
     print(score)    
     print(first_names)
-    print(last_names)
+    
     print(dates)
     '''
     
