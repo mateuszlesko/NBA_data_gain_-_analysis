@@ -14,13 +14,16 @@ from bs4 import BeautifulSoup as bs
 
 
 class FinishedScoreboard(object):
-    def __init__(self,first_name,last_name,score,win,lose):
+    def __init__(self,first_name,last_name,score):
         
         self.first_name = first_name
         self.last_name = last_name
         self.score = score
-        self.win = win
-        self.lose = lose
+        
+        #self.win = win
+        #self.lose = lose
+        
+        
 class UpcomingSchedule(object):
     def __init__(self,first_name,last_name,record):
         self.first_name = first_name
@@ -41,6 +44,8 @@ def ScrapeWebsiteWhenFinished(page):
     last_names =  []
     score = []
     links = []
+    
+    scoreboard = []
    
     
     string = soup.find_all('span',{'data-tst':'first-name'})
@@ -67,14 +72,23 @@ def ScrapeWebsiteWhenFinished(page):
         link = 'https://sports.yahoo.com'
         links.append(link+str(s.get('href')))
 
+    
+    
+    
     index1 = 0
     index2 = 1
     for team1,team2 in zip(first_names[0::2],first_names[1::2]):
+        scoreboard.append(FinishedScoreboard(team1,last_names[index1],score[index1]))
+        scoreboard.append(FinishedScoreboard(team1,last_names[index2],score[index2]))
+        
         print(team1,last_names[index1],score[index1],sep=' ')
         print(team2,last_names[index2],score[index2],sep=' ')
         print("###############################")
         index1 += 2
         index2 += 2
+   
+    
+        
    
     
 def ScrapeWebsiteWhenUpcoming(page):
@@ -141,12 +155,7 @@ def ScrapeWebsiteWhenLive(page):
     
     x1=0
     x2=1
-    '''
-    for sc1,sc2 in zip(score[0:2],score[1:2]):
-        print(last_names[x1],sc1,dates[x1],'\n',sep=':')
-        print(last_names[x2],sc2,dates[x1],'\n',sep=':')
-        print('###########')
-    '''
+    
     for ln1,ln2 in zip(last_names[0:2],last_names[1:2]):
         print(dates[x1])
         print(ln1,score[x1],sep=':')
@@ -156,12 +165,7 @@ def ScrapeWebsiteWhenLive(page):
         x2+=1
         
       
-    '''    
-    print(score)    
-    print(first_names)
-    
-    print(dates)
-    '''
+   
     
     
 def main():
