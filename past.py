@@ -28,15 +28,15 @@ class PastMatchup:
                   scores.append(score.getText())
                
         if(len(teams)>len(scores)):
-           difference=len(teams)-len(score)
-           print('D:',-difference-1)
-           del teams[0:-difference-1]
-            
+           difference=len(teams)-len(scores)
+           
+           del teams[0:difference]
+           
         x=0
         for team in teams:
             schedule.append(team+":"+ scores[x])
             x=x+1
-               
+              
         return schedule
          
 
