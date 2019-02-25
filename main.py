@@ -19,7 +19,7 @@ class ScheduleNBA():
 
         if condition.internet_on(url)==True:
             url = 'https://sports.yahoo.com/nba/scoreboard/?confId=&schedState=2&dateRange='
-            date = raw_input('format(yyyy.mm.dd): ')
+            date = input('format(yyyy.mm.dd): ')
             date = date.replace('.','-')
             url2=url+date
 
