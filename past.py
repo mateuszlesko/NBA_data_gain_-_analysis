@@ -37,7 +37,7 @@ class PastMatchup:
             schedule.append(team+":"+ scores[x])
             x=x+1
               
-        return teams,scores
+        return schedule
          
 
 #'Whs(nw) D(tbc) Va(m) Fw(b) Fz(27px)'

@@ -49,8 +49,10 @@ class ScheduleNBA():
                     dataFromPast = final.ScrapePast(soup,sources)
                     result = Results()
                     save=input("Do you want to save data? (Y or y)")
-                    if result.WantSave(save)==True:
-                        print(result.SaveData(dataFromPast,date))
+                    if result.wantSave(save)==True:
+                        #print(result.SaveData(dataFromPast,date))
+                        dataFromPast =  result.getData(dataFromPast)
+                        result.saveData(dataFromPast,date)
                     
 
                 sources = [item for item in soup.find_all('a',{'class':'gamecard-in_progress'})]

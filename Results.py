@@ -1,12 +1,23 @@
 import json
 
 class Results():
-    def WantSave(self,x):
+    def wantSave(self,x):
         save = False
         if x=='Y' or x=='y':
             save = True
         return save
-    def SaveData(self, arr,d):
+
+    def getData(self,arr):
+        teams = []
+        scores =[]
+        for y in arr:
+            separator_index = y.index(':')
+            data = y
+            teams.append(data[0:separator_index])
+            scores.append(data[separator_index:])
+        return teams,scores        
+          
+    def saveData(self, arr,d):
         teams = []
         scores =[]
         for y in arr[0]:
