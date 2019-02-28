@@ -7,7 +7,13 @@ class Results():
             save = True
         return save
 
-    def getData(self,arr):
+    def viewData(self,arr):
+        for x,y in zip(arr[0::2],arr[1::2]):
+            print(x)
+            print(y)
+            print('###########')
+
+    def seperateData(self,arr):
         teams = []
         scores =[]
         for y in arr:

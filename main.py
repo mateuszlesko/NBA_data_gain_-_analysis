@@ -45,13 +45,15 @@ class ScheduleNBA():
                     final = PastMatchup()
                     print('\n')
                     print('Final results of matches')
-                    print(final.ScrapePast(soup,sources))
+                    
                     dataFromPast = final.ScrapePast(soup,sources)
                     result = Results()
+                    result.viewData(dataFromPast)
+                    
                     save=input("Do you want to save data? (Y or y)")
                     if result.wantSave(save)==True:
-                        #print(result.SaveData(dataFromPast,date))
-                        dataFromPast =  result.getData(dataFromPast)
+                        
+                        dataFromPast =  result.seperateData(dataFromPast)
                         result.saveData(dataFromPast,date)
                     
 
