@@ -8,10 +8,14 @@ class Results():
         return save
 
     def viewData(self,arr):
+        text = ''
         for x,y in zip(arr[0::2],arr[1::2]):
-            print(x)
-            print(y)
-            print('###########')
+            text+=x
+            text+='\n'
+            text+=y
+            text+='\n'
+            text+='###########'
+        return text    
 
     def seperateData(self,arr):
         teams = []

@@ -48,7 +48,7 @@ class ScheduleNBA():
                     
                     dataFromPast = final.ScrapePast(soup,sources)
                     result = Results()
-                    result.viewData(dataFromPast)
+                    print(result.viewData(dataFromPast))
                     
                     save=input("Do you want to save data? (Y or y)")
                     if result.wantSave(save)==True:
