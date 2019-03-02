@@ -29,27 +29,50 @@ class ScheduleNBA():
            # soup = bs(page.content,'html.parser')
             if page !=0:
                 soup = bs(page.content,'html.parser')
+                
+                sources = [item for item in soup.find_all('a',{'class':'gamecard-in_progress'})]
+                
+                if len(sources)>0:
+                    
+                    print('\n')
+                    print('Live results of matches')
+                    live = LiveMatchup()
+                    dataFromLive = live.ScrapeLive(soup,sources)
+                    result = Results()
+                    #print(dataFromLive)
+                    print(result.viewData(dataFromLive))
+
+                
                 sources = [item for item in soup.find_all('a',{'class':'gamecard-pregame'})]
 
                 if len(sources)>0:
 
                     upcoming = UpcomingSchedule()
-                    print('\n')
+                    
                     print('Upcoming matches: ',len(sources))
-                    print(upcoming.scrapeFuture(soup,sources))
+                    dataFromFuture = upcoming.scrapeFuture(soup,sources)
+
+                    
+
+                    result = Results()
+                    print(result.viewData(dataFromFuture))
+
+                    
 
                 sources = [item for item in soup.find_all('a',{'class':'gamecard-final'})]
 
                 if len(sources)>0:
-
+                    
                     final = PastMatchup()
                     print('\n')
                     print('Final results of matches')
                     
                     dataFromPast = final.ScrapePast(soup,sources)
+                    
                     result = Results()
                     print(result.viewData(dataFromPast))
                     
+
                     save=input("Do you want to save data? (Y or y)")
                     if result.wantSave(save)==True:
                         
@@ -57,13 +80,7 @@ class ScheduleNBA():
                         result.saveData(dataFromPast,date)
                     
 
-                sources = [item for item in soup.find_all('a',{'class':'gamecard-in_progress'})]
-                if len(sources)>0:
-                    print('\n')
-                    print('Live results of matches')
-                    live = LiveMatchup()
-                    print(live.ScrapeLive(soup,sources))
-
+                
         else:
             return "No connection to net"
         return 0
