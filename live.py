@@ -11,7 +11,7 @@ from bs4 import  BeautifulSoup as bs
 
 class LiveMatchup:
 
-    def ScrapeLive(self,soup,sources):
+    def ScrapeLive(self,soup):
     
         teams = []
         scores = []

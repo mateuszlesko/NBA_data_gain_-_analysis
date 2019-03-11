@@ -13,7 +13,7 @@ from bs4 import  BeautifulSoup as bs
 
 class PastMatchup:
 
-    def ScrapePast(self,soup,sources):
+    def ScrapePast(self,soup):
     
         teams = []
         scores = []
@@ -40,5 +40,4 @@ class PastMatchup:
         return schedule
          
 
-#'Whs(nw) D(tbc) Va(m) Fw(b) Fz(27px)'
            
