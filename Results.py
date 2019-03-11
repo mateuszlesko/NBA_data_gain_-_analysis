@@ -1,4 +1,11 @@
 import json
+from PyQt5.QtWidgets import (
+QApplication,QWidget,QMainWindow,QTableWidget,
+QTableWidgetItem,QVBoxLayout,QPushButton,
+QMessageBox,QAction, QLineEdit)
+from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtGui import QIcon
+
 
 class Results():
     def wantSave(self,x):
@@ -7,15 +14,13 @@ class Results():
             save = True
         return save
 
-    def viewData(self,arr):
-        text = ''
-        for x,y in zip(arr[0::2],arr[1::2]):
-            text+=x
-            text+='\n'
-            text+=y
-            text+='\n'
-            text+='###########'
-        return text    
+    def viewData(self,arr,tableWidget):
+        tableWidget.setRowCount(len(arr)/2)
+        tableWidget.setColumnCount(2)
+                
+        for x in range(0,len(arr)):
+            for y in range(0,1):
+                tableWidget.setItem(y,x,QTableWidgetItem(arr[x]))
 
     def seperateData(self,arr):
         teams = []
