@@ -33,7 +33,8 @@ class App(QWidget):
     def initUI(self) :
         self.setWindowTitle(self.title)
         self.setGeometry(self.left,self.top,self.width,self.height)  
-       
+        
+        
         self.createTable()
 
         self.layout = QVBoxLayout()
@@ -44,7 +45,7 @@ class App(QWidget):
         self.textbox = QLineEdit(self) 
         self.textbox.move(120,0)
         self.textbox.resize(120,40)
-
+        self.layout.addStretch()
 
         button1 = QPushButton('info',self)
         button1.setToolTip('see results')
@@ -55,10 +56,14 @@ class App(QWidget):
         button2.setToolTip('save results')
         button2.clicked.connect(self.on_click3)
         button2.move(350,0)
+        
+        
         self.show()
     
     def createTable(self):
+        
         self.tableWidget = QTableWidget()
+        
     
     @pyqtSlot()
     
@@ -79,6 +84,7 @@ class App(QWidget):
             page = condition.requestPage(url2)
             soup = bs(page.content,'html.parser')
             
+            all_data = []
             ##scraping live matchups
             sources = [item for item in soup.find_all('a',{"class":'gamecard-in_progress'})]
             if len(sources)>0:
@@ -93,8 +99,9 @@ class App(QWidget):
                 upcoming = UpcomingSchedule()
                 dataFromFuture = upcoming.scrapeFuture(soup)
                 result = Results()
-                result.viewData(dataFromFuture,self.tableWidget)
-            
+                all_data+=dataFromFuture
+                #result.viewData(dataFromFuture,self.tableWidget)
+                print(dataFromFuture)
             ## scraping ended matchups
             sources = [item for item in soup.find_all('a',{'class':'gamecard-final'})]
             if len(sources)>0:
@@ -102,9 +109,10 @@ class App(QWidget):
                 dataFromPast = past.ScrapePast(soup)
                 self.dataEnded = list(dataFromPast)
                 result = Results()
-                result.viewData(dataFromPast,self.tableWidget)
+                all_data+=dataFromPast
+                #result.viewData(dataFromPast,self.tableWidget)
                 
-            
+            result.viewData(all_data,self.tableWidget)
             self.tableWidget.move(50,0)
         else:
             msg = QMessageBox()
@@ -114,7 +122,6 @@ class App(QWidget):
         msg.exec_()
     def on_click3(self):
         
-
         result = Results()
         data = result.seperateData(self.dataEnded)
         result.saveData(data,self.textbox.text())
