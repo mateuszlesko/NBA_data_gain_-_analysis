@@ -1,9 +1,9 @@
 # NBA_scoreboard
 
 ## About
-NBA scoreboard web scraping using Python's selenium.
-Informations about results of matches are from sport.yahoo
-## Requirements
+Web scraping using Python's selenium. Program gains data about NBA games stats and save it to JSON files, for fruther analysis. Informations are from [the offical NBA page](https://www.nba.com/) 
+
+## Requirements:
 [pipenv](https://pipenv.pypa.io/en/latest/)
 
 [Edge browser](https://www.microsoft.com/en-us/edge)
