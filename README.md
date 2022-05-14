@@ -1,7 +1,7 @@
-# NBA_scoreboard
+# NBA matches stats scraper
 
 ## About
-Web scraping using Python's selenium. Program gains data about NBA games stats and save it to JSON files, for fruther analysis. Informations are from [the offical NBA page](https://www.nba.com/) 
+Web scraping using Python's selenium. Program gains data about NBA games stats and save it to JSON files, for further analysis. Informations are from [the offical NBA page](https://www.nba.com/) 
 
 ## Requirements:
 [pipenv](https://pipenv.pypa.io/en/latest/)
