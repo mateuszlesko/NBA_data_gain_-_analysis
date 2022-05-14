@@ -13,7 +13,7 @@ ID of the first game of 2021-22 season is : 0022100001
 ID of the last game of 2021-22 season is: 0022101177
 We can see that substring 002210 is in both IDs
 """
-from scrapper.NBADetailsMatchScrapper import NBADetailsMatchScrapper
+from scrapper.NBADetailsMatch import NBADetailsMatch
 START_ID = 0
 LAST_ID = 5
 class NBASchedule():
@@ -34,7 +34,7 @@ class NBASchedule():
 
         for mi in matches_ids:
             print("https://www.nba.com/game/{}/box-score#box-score".format(mi))
-            scrapper = NBADetailsMatchScrapper("https://www.nba.com/game/{}/box-score#box-score".format(mi)).getContentData().closeDriver().cleanData().saveDataToJSON()    
+            scrapper = NBADetailsMatch("https://www.nba.com/game/{}/box-score#box-score".format(mi)).getContentData().closeDriver().cleanData().saveDataToJSON()    
         pass
 
 if __name__ == '__main__':
