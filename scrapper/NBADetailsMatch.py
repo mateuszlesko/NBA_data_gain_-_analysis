@@ -3,16 +3,6 @@ import json
 from time import sleep
 from selenium import webdriver
 
-# driver = webdriver.Edge()
-# driver.get("https://www.nba.com/game/0022100001/box-score#box-score")
-# driver.find_element_by_css_selector("button#onetrust-reject-all-handler").click()
-# sleep(1)
-# driver.refresh()
-# sleep(2)
-# data_json = driver.find_element_by_css_selector("script#__NEXT_DATA__").get_attribute('innerHTML')
-# print(data_json)
-#driver.quit()
-
 class NBADetailsMatch(object):
     def __init__(self, link):
         self.link = link
