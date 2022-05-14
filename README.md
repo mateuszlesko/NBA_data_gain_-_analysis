@@ -1,6 +1,13 @@
 # NBA_scoreboard
-NBA scoreboard web scraping using Python's beautiful soup.
+
+## About
+NBA scoreboard web scraping using Python's selenium.
 Informations about results of matches are from sport.yahoo
-<h3>requirements</h3>
-installed python 3, beautiful soup package
-*pyQT5 for GUI 
+## Requirements
+[pipenv](https://pipenv.pypa.io/en/latest/)
+
+[Edge browser](https://www.microsoft.com/en-us/edge)
+
+[Edge driver - (Stable channel)](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/)
+
+**After download Edge driver you have to add it to System PATH**
