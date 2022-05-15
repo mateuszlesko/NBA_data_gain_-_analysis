@@ -7,6 +7,10 @@ name = "pypi"
 urllib3 = "*"
 selenium = "*"
 chromedriver-binary = "*"
+scipy = "*"
+matplotlib = "*"
+pandas = "*"
+numpy = "*"
 
 [dev-packages]
 

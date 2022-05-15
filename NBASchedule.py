@@ -31,7 +31,7 @@ class NBASchedule():
             else:
                 str_id="{}".format(x)
             matches_ids.append(str_id)
-
+       
         for mi in matches_ids:
             print("https://www.nba.com/game/{}/box-score#box-score".format(mi))
             scrapper = NBADetailsMatch("https://www.nba.com/game/{}/box-score#box-score".format(mi)).getContentData().closeDriver().cleanData().saveDataToJSON()    
