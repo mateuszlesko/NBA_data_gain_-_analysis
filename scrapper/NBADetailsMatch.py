@@ -20,7 +20,6 @@ class NBADetailsMatch(object):
     
     def cleanData(self):
         clean_data = (json.loads(self.data)["props"]["pageProps"]["game"])
-        print(clean_data.keys())
         del clean_data["broadcasters"]
         del clean_data["videoAvailableFlag"]
         del clean_data["ptAvailable"]
@@ -36,6 +35,6 @@ class NBADetailsMatch(object):
             f.write(self.data)
         return self
 
-    def quitDriver(self):
+    def closeDriver(self):
         self.driver.quit()
         return self
